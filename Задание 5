@@ -1,0 +1,5 @@
+a = []
+n = a.append(int(input()))
+k = a.append(int(input()))
+m = a.append(int(input()))
+print(min(a))
