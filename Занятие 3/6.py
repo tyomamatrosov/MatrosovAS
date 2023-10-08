@@ -1,4 +1,4 @@
-def F(n1, n2, m1, m2)
+def F(n1, n2, m1, m2):
     d1 = 0
     d2 = 0
     if n1 or n2 %2==0:
