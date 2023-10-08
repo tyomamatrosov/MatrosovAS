@@ -1,4 +1,4 @@
-def F(A, B)
+def F(A, B):
   if A < B:
     for i in range(A, B + 1):
       print(i)
