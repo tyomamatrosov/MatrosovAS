@@ -1,4 +1,4 @@
-N = int(input())
+def F(n):
 
 total = 0
 
@@ -7,3 +7,7 @@ for i in range(N):
     total += num
 
 print(total)
+
+N = int(input())
+
+F(N)
