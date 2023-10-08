@@ -1,9 +1,9 @@
-A = int(input()) 
-B = int(input()) 
+N = int(input())
 
-if A > B:
-  for i in range(A, B - 1, -1):
-    if i % 2 != 0:
-      print(i)
-else:
-  print("A должно быть больше B")
+total = 0
+
+for i in range(N):
+    num = int(input())
+    total += num
+
+print(total)
