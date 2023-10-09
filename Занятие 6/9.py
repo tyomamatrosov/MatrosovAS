@@ -1,9 +1,9 @@
 def F(text, word):
-    words_list = text.split()
+    splittedtext = text.split()
     count = 0
-    for w in words_list:
+    for w in splittedtext:
         if w.lower() == word.lower():  
             count += 1
     return count
 
-F(the red fox jumps across the bridge, fox)
+F("the red Fox jumps across the bridge", fox)
