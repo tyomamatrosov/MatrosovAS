@@ -1,43 +1,63 @@
 def F(matrix):
     max_value = None
-    max_i, max_j = None, None
+    max_indices = None
 
-    for i, row in enumerate(matrix):
-        for j, element in enumerate(row):
-            current_value = abs(element)
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            current_value = abs(matrix[i][j])
             if max_value is None or current_value > max_value:
                 max_value = current_value
-                max_i, max_j = i, j
+                max_indices = (i, j)
 
-    return max_value, max_i, max_j
+    return max_indices
 
+# Функция для удаления строки и столбца с заданными индексами из матрицы
 def R(matrix, row, col):
-    return [[matrix[i][j] for j in range(len(matrix[i])) if j != col] for i in range(len(matrix)) if i != row]
+    new_matrix = [row[:col] + row[col + 1:] for i, row in enumerate(matrix) if i != row]
+    return [list(x) for x in zip(*new_matrix)]
 
-def Read(file_name):
-    with open(file_name, 'r') as file:
-        lines = file.readlines()
-        matrix = [list(map(int, line.split())) for line in lines]
+# Функция для чтения матрицы из файла
+def Read(file_path):
+    matrix = []
+
+    with open(file_path, 'r') as file:
+        for line in file:
+            row = [float(value) for value in line.split()]
+            matrix.append(row)
+
     return matrix
 
-def Write(matrix, file_name):
-    with open(file_name, 'w') as file:
+# Функция для записи матрицы в файл
+def W(file_path, matrix):
+    with open(file_path, 'w') as file:
         for row in matrix:
-            file.write(' '.join(map(str, row)) + '\n')
+            line = ' '.join(map(str, row)) + '\n'
+            file.write(line)
 
-# Организация ввода данных из файла
-input_file_name = "Матросов_У-234_vvod.txt"
-matrix = R(input_file_name)
+# Чтение матрицы из файла
+file_path_input = "Матросов_У-234_vvod.txt"
+matrix = Read(file_path_input)
 
-# Нахождение наибольшего по модулю элемента
-max_value, max_i, max_j = F(matrix)
+# Поиск индексов максимального по модулю элемента
+max_indices = F(matrix)
 
-# Создание новой матрицы без строки и столбца с найденным элементом
-new_matrix = R(matrix, max_i, max_j)
+if max_indices:
+    # Удаление строки и столбца с максимальным элементом
+    new_matrix = R(matrix, max_indices[0], max_indices[1])
 
-# Организация вывода результатов в файл
-output_file_name = "Матросов_У-234_vivod.txt"
-W(new_matrix, output_file_name)
+    # Вывод результата 
+    print("Исходная матрица:")
+    for row in matrix:
+        print(row)
 
-print(f"Наибольший по модулю элемент: {max_value}")
-print(f"Индексы строки и столбца: ({max_i}, {max_j})")
+    print("\nМаксимальный по модулю элемент:", matrix[max_indices[0]][max_indices[1]])
+
+    print("\nНовая матрица (без строки и столбца с максимальным элементом):")
+    for row in new_matrix:
+        print(row)
+
+    # Запись результата в файл
+    file_path_output = "Матросов_У-234_vivod2.txt"
+    W(file_path_output, new_matrix)
+else:
+    print("Матрица пуста.")
