@@ -30,7 +30,7 @@ matrix, k = Read(input_file_name)
 count, max_value = F(matrix, k)
 
 # Организация вывода результатов в файл
-output_file_name = "Матросов_У-234_vivod.txt"
+output_file_name = "Матросов_У-234_vivod1.txt"
 Write(count, max_value, output_file_name)
 
 print(f"Количество элементов, кратных {k}: {count}")
