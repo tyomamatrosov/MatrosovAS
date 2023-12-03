@@ -11,7 +11,7 @@ def F(matrix, k):
     return count, max_value
 
 def Read(file_name):
-    with open(file_name, 'r') as file:
+    with open(input_file_name, 'r') as file:
         lines = file.readlines()
         matrix = [list(map(int, line.split())) for line in lines[:-1]]  # Исключаем последнюю строку с k
         k = int(lines[-1])
