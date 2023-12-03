@@ -21,15 +21,12 @@ def Write(count, max_value, output_file_name):
     with open(output_file_name, 'w') as file:
         file.write(f"Количество элементов, кратных {k}: {count}\n")
         file.write(f"Наибольший элемент, кратный {k}: {max_value}\n")
-
-# Организация ввода данных из файла
+        
 input_file_name = "Матросов_У-234_vvod.txt"
 matrix, k = Read(input_file_name)
 
-# Нахождение числа элементов, кратных k, и наибольшего из этих элементов
 count, max_value = F(matrix, k)
 
-# Организация вывода результатов в файл
 output_file_name = "Матросов_У-234_vivod1.txt"
 Write(count, max_value, output_file_name)
 
