@@ -5,7 +5,7 @@ def F():
     if current_number == 0:
         return current_number
 
-    next_max = find_max_value()
+    next_max = F()
     return max(current_number, next_max)
 
 
