@@ -1,62 +1,41 @@
 import java.io.*;
 import java.util.*;
-
 public class Main {
-
     private static final String HISTORY_FILE = "his.txt";
-    
-    // Метод для сложения
     public static double summ(double a, double b) {
         return a + b;
     }
-
-    // Метод для вычитания
     public static double minus(double a, double b) {
         return a - b;
     }
-
-    // Метод для умножения
     public static double ymnozhenie(double a, double b) {
         return a * b;
     }
-
-    // Метод для деления
     public static double del(double a, double b) {
         if (b == 0) {
             throw new ArithmeticException("Деление на 0");
         }
         return a / b;
     }
-
-    // Метод для деления без остатка
     public static int delbezost(int a, int b) {
         if (b == 0) {
             throw new ArithmeticException("Деление на 0");
         }
         return a / b;
     }
-
-    // Метод для остатка от деления
     public static int mod(int a, int b) {
         if (b == 0) {
             throw new ArithmeticException("деление на 0");
         }
         return a % b;
     }
-
-    // Метод для возведения в степень
     public static double stepen(double a, double b) {
         return Math.pow(a, b);
     }
-
-    // Метод для модуля числа
     public static double modul(double a) {
         return Math.abs(a);
     }
-
-    // Метод для парсинга и вычисления выражения
     public static double evaluate(String expression) {
-        // Для упрощения использования обратной польской записи (RPN)
         return new Object() {
             int pos = -1, c;
 
@@ -126,8 +105,6 @@ public class Main {
             }
         }.parse();
     }
-
-    // Метод для сохранения истории вычислений
     public static void saveHistory(List<String> history) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(HISTORY_FILE))) {
             for (String record : history) {
@@ -138,8 +115,6 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-    // Метод для загрузки истории вычислений
     public static List<String> loadHistory() {
         List<String> history = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(HISTORY_FILE))) {
