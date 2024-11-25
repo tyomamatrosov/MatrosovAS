@@ -39,7 +39,7 @@ class HospitalConsoleApp {
                     listPatients();
                     break;
                 case 8:
-                    return; // Выход из приложения
+                    return; 
                 default:
                     System.out.println("Неверный выбор, попробуйте снова.");
             }
@@ -61,14 +61,14 @@ class HospitalConsoleApp {
 
     private static int getIntInput() {
         while (!scanner.hasNextInt()) {
-            scanner.next(); // Сбрасываем некорректный ввод
+            scanner.next(); 
             System.out.print("Введите число: ");
         }
         return scanner.nextInt();
     }
 
     private static void addDepartment() {
-        scanner.nextLine(); // Поглощаем лишний символ новой строки
+        scanner.nextLine(); 
         System.out.print("Введите название отделения: ");
         String name = scanner.nextLine();
         Department department = new Department(0, name, 0);
@@ -94,7 +94,7 @@ class HospitalConsoleApp {
     }
 
     private static void addPatient() {
-        scanner.nextLine(); // Поглощаем лишний символ новой строки
+        scanner.nextLine(); 
         System.out.print("Введите ФИО пациента: ");
         String fullName = scanner.nextLine();
         System.out.print("Введите возраст пациента: ");
@@ -128,7 +128,7 @@ class HospitalConsoleApp {
             return;
         }
 
-        scanner.nextLine(); // Поглощаем лишний символ новой строки
+        scanner.nextLine(); 
         System.out.print("Введите новое ФИО пациента (оставьте пустым для без изменений): ");
         String fullName = scanner.nextLine();
         if (!fullName.isEmpty()) {
@@ -154,7 +154,7 @@ class HospitalConsoleApp {
         }
 
         patientService.updatePatient(patient);
-        System.out.println("Пациент обновлен!");
+        System.out.println("Пациент обновлен");
     }
 
     private static void listPatients() {
